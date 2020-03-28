@@ -8,6 +8,6 @@ public class EdgeNode {
     /*边表结点*/
 
     int adjvex;
-    int weight;
-    EdgeNode nxt;
+    EdgeNode next;
+
 }

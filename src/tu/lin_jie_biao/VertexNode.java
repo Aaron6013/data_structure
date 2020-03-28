@@ -8,5 +8,9 @@ public class VertexNode {
     /*顶点表结点*/
 
     int data;
-    VertexNode next;
+    EdgeNode firstedge;
+
+    public VertexNode(int data) {
+        this.data = data;
+    }
 }
