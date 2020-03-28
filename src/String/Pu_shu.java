@@ -28,6 +28,12 @@ public class Pu_shu {
                 j = 0;
             }
         }
+        /*匹配成功也可写成
+        if(j > s2.length())  成功匹配后，j的值一定大于s2的长度
+            return i - s2.length();
+        else  
+            return -1;
+         */
         return -1; //执行到这一步意味着没有匹配
     }
 }
