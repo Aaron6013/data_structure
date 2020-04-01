@@ -4,7 +4,7 @@ public class Zhan {
 
     int len;
     int top;
-    int [] name;
+    int [] arr;
     int val; // 用于接收出栈的值
 
     public Zhan() {
@@ -13,12 +13,8 @@ public class Zhan {
 
     public Zhan(int len) {
         this.len = len; //栈的长度
-        this.top = -1;  //栈顶指针
-    }
-
-    /*初始化栈*/
-    public void init_zhan(){
-        name = new int[len];
+        this.top = -1;  //栈顶指针,空栈时为-1，有元素时。始终指向栈顶元素
+        arr = new int[len];
     }
 
     /*判断栈是否满*/
@@ -43,7 +39,7 @@ public class Zhan {
             if(is_full())
                 throw new FullException("栈已满");
 
-            name[++top] = val;
+            arr[++top] = val;  //栈顶指针先上移一位，在入值
             return true;
     }
 
@@ -53,7 +49,7 @@ public class Zhan {
         if(is_empty())
             throw new EmptyException("栈为空");
 
-        val = name[top--];
+        val = arr[top--];   //先删除栈顶元素，再将栈顶指针下移一位
         System.out.println(val);
         return true;
     }
