@@ -5,7 +5,6 @@ public class test {
     public static void main(String[] args) {
 
         Array a = new Array(5); //数组长度为10，有效元素为0
-        a.init_Array(); // 初试化数组，即确定数组长度
         try{
             a.append_Array(100);
             a.append_Array(66);

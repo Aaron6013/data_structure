@@ -5,21 +5,15 @@ public class Array {
 
     int len; //数组长度
     int cnt; //有效元素的个数
-    int [] name;
+    int[] arr;
     int remove_value; //记录删除的元素的值
 
     public Array(int len) {
-        cnt = 0;
+        cnt = 0;  //有效元素个数刚开始为0,以cnt为下标的位置无值
         this.len = len;
+        arr = new int[len];  //初始化数组，长度为len，值都为0
     }
 
-
-    /*初始化数组*/
-
-    public void init_Array() {
-
-        name = new int[len];
-    }
 
     /*判断数组是否为空*/
     public boolean is_empty() {
@@ -36,7 +30,7 @@ public class Array {
             throw new EmptyException("数组为空，无法输出");
         }else{
             for(int i = 0;i < cnt;i++){
-                System.out.println(name[i]);
+                System.out.println(arr[i]);
             }
         }
     }
@@ -55,7 +49,7 @@ public class Array {
         if (is_full()) {
             throw new FullException("数组已满，无法追加");
         }else{
-            name[cnt] = value;
+            arr[cnt] = value;
             cnt++;
             return true;
         }
@@ -67,11 +61,15 @@ public class Array {
         if (is_full()) {
             throw new FullException("数组已满，无法添加");
         }else{
+            /*例如要在第三个位置添加，实际上是在下标为2的地方添加，
+              从最后一个位置的元素到下标为2的元素，依次向后移一位，
+              先移后添加
+            */
             for(int i = cnt;i > pos - 1; i--){
-                name[i] = name[i-1];
+                arr[i] = arr[i-1];
             }
-            name[pos - 1] = value;
-            cnt++;
+            arr[pos - 1] = value;
+            cnt++;  //添加后数组元素多一个，故++
             return true;
         }
     }
@@ -81,13 +79,14 @@ public class Array {
 
         if(is_empty()) {
             throw new EmptyException("数组为空，无法删除");
-        }else if(pos < 1 || cnt < pos){
+        }else if(pos < 1 || cnt < pos){  //若要删除的位置小于1或者大于数组有效元素的个数，则报错
             return false;
         } else{
-            remove_value = name[pos - 1];
+            /*同在某个位置添加元素，不同的先将元素删除，再把后面位置的元素依次向前移一位*/
+            remove_value = arr[pos - 1];
             if(pos < cnt){
                 for(int i = pos;i < cnt;i++) {
-                    name[i - 1] = name[i];
+                    arr[i - 1] = arr[i];
                     if (i == cnt - 1) {
                         cnt--;
                     }
@@ -97,16 +96,16 @@ public class Array {
         return true;
     }
 
-    /*数组元素倒置*/
+    /*数组元素倒置，此方法适用于有效元素个数为奇数或偶数*/
     public void inversion_Array(){
 
         int i = 0;
-        int j = cnt - 1;
+        int j = cnt - 1;  //最后一个元素的下标为cnt-1
         int t;
         while(i < j){
-            t = name[i];
-            name[i] = name[j];
-            name[j] = t;
+            t = arr[i];
+            arr[i] = arr[j];
+            arr[j] = t;
             i++;
             j--;
         }
@@ -118,10 +117,10 @@ public class Array {
         int t;
         for(int i = cnt - 1;i > 0;i--){
             for(int j = 0;j < i;j++){
-                if(name[j] > name[j+1]){
-                    t = name[j];
-                    name[j] = name[j+1];
-                    name[j+1] = t;
+                if(arr[j] > arr[j+1]){
+                    t = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = t;
                 }
             }
         }
