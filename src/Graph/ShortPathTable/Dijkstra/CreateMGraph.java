@@ -64,9 +64,7 @@ public class CreateMGraph {
     /*最短路径*/
     public int[] shortTestPath_Dijkstra(){
     /*仅能求得从某顶点开始到其它顶点的最短路径，默认起始点为0顶点
-      和最小生成树的prim算法有点像，但prim的j的作用仅为记次数，以此
-      来确保所有顶点均在最小生成树内，而本算法的j，是从所有顶点（除自身）
-      来找从本顶点出发，到达下一顶点（他俩间距离最近）*/
+      和最小生成树的prim算法有点像*/
         int min;
         int k;
 
