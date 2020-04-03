@@ -12,7 +12,7 @@ public class CreateMGraph {
     int numEdges;    //边数
     int[] arr;      //顶点矩阵
     int[][] arr1;   //邻边矩阵
-    int[] pathArc;  //存储最短路径下标,0到此下标的顶点，最近的前一个顶点为其值
+    int[] pathArc;  //起点为0顶点，到下标顶点，0要到的下一个顶点为其值
     int[] shortPathTable; //存储顶点0到各点（下标）的最小权值和
     int[] fin;   //对应下标为1表示求得顶点0到其最短路径
 
