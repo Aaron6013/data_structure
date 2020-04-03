@@ -24,7 +24,7 @@ public class Pu_shu {
                     return i - j;
                 }
             }else {
-                i = i - j + 1;
+                i = i - j + 1;  //没有匹配成功，i返回到i上一次开始位置的下一个位置
                 j = 0;
             }
         }

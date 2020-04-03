@@ -21,7 +21,7 @@ public class KMP {
         int len = s2.length();
         int[] next = new int[len];  //next数组长度和s2字符串长度一样，且索引都从0开始
         next[0] = -1;
-        while (i < len - 1){
+        while (i < len - 1){  //确保s2中每一个字符都得到对应的next数组
             if(j == -1 || s2.charAt(i) == s2.charAt(j)){
                 ++i;
                 ++j;
