@@ -6,9 +6,10 @@ public class test {
         l.createLinkList();
         l.insertLinkList(3,4);
         l.insertLinkList(6,6);
-        l.sortLinkList();
+        //l.sortLinkList();
         l.deleteLinkList(3);
         l.showLinkList();
+        System.out.println(l.lengthLinkList());
         System.out.println("删除元素为：" +l.val);
     }
 }

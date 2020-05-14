@@ -83,12 +83,12 @@ public class LinkList {
     public boolean insertLinkList(int pos, int val){
     /*先找到pos的前一个结点（pos-1），然后将此结点（前一结点）的下一个结点指向新建
     结点,将新建结点的下一个结点指向原来pos-1结点的前一个结点*/
-        int i = 0;
+        int i = 1;
         Node j = head;
 
-        while (j != null && i < pos -1){
+        while (j != null && i < pos ){
             j = j.next;
-            i++; //i=1,对应j在第1个结点
+            i++;
         }
 
         if(j == null || i > pos){
@@ -107,15 +107,15 @@ public class LinkList {
     public boolean deleteLinkList(int pos){
         /*同添加结点，先找到pos-1位置的结点，将此结点的下一个结点指向
          要删除结点的下一个结点*/
-        int i = 0;
+        int i = 1;
         Node j = head;
 
-        while (j.next != null && i < pos - 1){
+        while (j.next != null && i < pos ){
             j = j.next;
             i++;
         }
 
-        if(j.next == null || i > pos - 1){
+        if(j.next == null || i > pos){
             return  false;
         }
 
