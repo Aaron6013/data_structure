@@ -1,21 +1,21 @@
 package mo_ni_shu_zu;
-/*å®šä¹‰ä¸€ä¸ªæ•°ç»„ç±»*/
+/*¶¨ÒåÒ»¸öÊı×éÀà*/
 
 public class Array {
 
-    int len; //æ•°ç»„é•¿åº¦
-    int cnt; //æœ‰æ•ˆå…ƒç´ çš„ä¸ªæ•°
+    int len; //Êı×é³¤¶È
+    int cnt; //ÓĞĞ§ÔªËØµÄ¸öÊı
     int[] arr;
-    int remove_value; //è®°å½•åˆ é™¤çš„å…ƒç´ çš„å€¼
+    int remove_value; //¼ÇÂ¼É¾³ıµÄÔªËØµÄÖµ
 
     public Array(int len) {
-        cnt = 0;  //æœ‰æ•ˆå…ƒç´ ä¸ªæ•°åˆšå¼€å§‹ä¸º0,ä»¥cntä¸ºä¸‹æ ‡çš„ä½ç½®æ— å€¼
+        cnt = 0;  //ÓĞĞ§ÔªËØ¸öÊı¸Õ¿ªÊ¼Îª0,ÒÔcntÎªÏÂ±êµÄÎ»ÖÃÎŞÖµ
         this.len = len;
-        arr = new int[len];  //åˆå§‹åŒ–æ•°ç»„ï¼Œé•¿åº¦ä¸ºlenï¼Œå€¼éƒ½ä¸º0
+        arr = new int[len];  //³õÊ¼»¯Êı×é£¬³¤¶ÈÎªlen£¬Öµ¶¼Îª0
     }
 
 
-    /*åˆ¤æ–­æ•°ç»„æ˜¯å¦ä¸ºç©º*/
+    /*ÅĞ¶ÏÊı×éÊÇ·ñÎª¿Õ*/
     public boolean is_empty() {
         if (cnt == 0)
             return true;
@@ -23,11 +23,11 @@ public class Array {
             return false;
     }
 
-    /*è¾“å‡ºæ•°ç»„*/
+    /*Êä³öÊı×é*/
     public void show_Array() throws EmptyException{
 
         if(is_empty()){
-            throw new EmptyException("æ•°ç»„ä¸ºç©ºï¼Œæ— æ³•è¾“å‡º");
+            throw new EmptyException("Êı×éÎª¿Õ£¬ÎŞ·¨Êä³ö");
         }else{
             for(int i = 0;i < cnt;i++){
                 System.out.println(arr[i]);
@@ -35,7 +35,7 @@ public class Array {
         }
     }
 
-    /*åˆ¤æ–­æ•°ç»„æ˜¯å¦æ»¡*/
+    /*ÅĞ¶ÏÊı×éÊÇ·ñÂú*/
     public boolean is_full(){
         if (cnt == len)
             return true;
@@ -43,11 +43,11 @@ public class Array {
             return  false;
     }
 
-    /*æ•°ç»„è¿½åŠ å…ƒç´ */
+    /*Êı×é×·¼ÓÔªËØ*/
     public boolean append_Array (int value) throws FullException {
 
         if (is_full()) {
-            throw new FullException("æ•°ç»„å·²æ»¡ï¼Œæ— æ³•è¿½åŠ ");
+            throw new FullException("Êı×éÒÑÂú£¬ÎŞ·¨×·¼Ó");
         }else{
             arr[cnt] = value;
             cnt++;
@@ -55,52 +55,48 @@ public class Array {
         }
     }
 
-    /*åœ¨æŸä¸ªç‰¹å®šä½ç½®æ·»åŠ å…ƒç´ */
+    /*ÔÚÄ³¸öÌØ¶¨Î»ÖÃÌí¼ÓÔªËØ*/
     public boolean insert_Array(int pos,int value) throws FullException {
 
         if (is_full()) {
-            throw new FullException("æ•°ç»„å·²æ»¡ï¼Œæ— æ³•æ·»åŠ ");
+            throw new FullException("Êı×éÒÑÂú£¬ÎŞ·¨Ìí¼Ó");
         }else{
-            /*ä¾‹å¦‚è¦åœ¨ç¬¬ä¸‰ä¸ªä½ç½®æ·»åŠ ï¼Œå®é™…ä¸Šæ˜¯åœ¨ä¸‹æ ‡ä¸º2çš„åœ°æ–¹æ·»åŠ ï¼Œ
-              ä»æœ€åä¸€ä¸ªä½ç½®çš„å…ƒç´ åˆ°ä¸‹æ ‡ä¸º2çš„å…ƒç´ ï¼Œä¾æ¬¡å‘åç§»ä¸€ä½ï¼Œ
-              å…ˆç§»åæ·»åŠ 
+            /*ÀıÈçÒªÔÚµÚÈı¸öÎ»ÖÃÌí¼Ó£¬Êµ¼ÊÉÏÊÇÔÚÏÂ±êÎª2µÄµØ·½Ìí¼Ó£¬
+              ´Ó×îºóÒ»¸öÎ»ÖÃµÄÔªËØµ½ÏÂ±êÎª2µÄÔªËØ£¬ÒÀ´ÎÏòºóÒÆÒ»Î»£¬
+              ÏÈÒÆºóÌí¼Ó
             */
             for(int i = cnt;i > pos - 1; i--){
                 arr[i] = arr[i-1];
             }
             arr[pos - 1] = value;
-            cnt++;  //æ·»åŠ åæ•°ç»„å…ƒç´ å¤šä¸€ä¸ªï¼Œæ•…++
+            cnt++;  //Ìí¼ÓºóÊı×éÔªËØ¶àÒ»¸ö£¬¹Ê++
             return true;
         }
     }
 
-    /*åˆ é™¤æŸä¸ªä½ç½®å…ƒç´ */
+    /*É¾³ıÄ³¸öÎ»ÖÃÔªËØ*/
     public boolean delect_Array(int pos)throws EmptyException{
 
         if(is_empty()) {
-            throw new EmptyException("æ•°ç»„ä¸ºç©ºï¼Œæ— æ³•åˆ é™¤");
-        }else if(pos < 1 || cnt < pos){  //è‹¥è¦åˆ é™¤çš„ä½ç½®å°äº1æˆ–è€…å¤§äºæ•°ç»„æœ‰æ•ˆå…ƒç´ çš„ä¸ªæ•°ï¼Œåˆ™æŠ¥é”™
+            throw new EmptyException("Êı×éÎª¿Õ£¬ÎŞ·¨É¾³ı");
+        }else if(pos < 1 || cnt < pos){  //ÈôÒªÉ¾³ıµÄÎ»ÖÃĞ¡ÓÚ1»òÕß´óÓÚÊı×éÓĞĞ§ÔªËØµÄ¸öÊı£¬Ôò±¨´í
             return false;
         } else{
-            /*åŒåœ¨æŸä¸ªä½ç½®æ·»åŠ å…ƒç´ ï¼Œä¸åŒçš„å…ˆå°†å…ƒç´ åˆ é™¤ï¼Œå†æŠŠåé¢ä½ç½®çš„å…ƒç´ ä¾æ¬¡å‘å‰ç§»ä¸€ä½*/
+            /*Í¬ÔÚÄ³¸öÎ»ÖÃÌí¼ÓÔªËØ£¬²»Í¬µÄÏÈ½«ÔªËØÉ¾³ı£¬ÔÙ°ÑºóÃæÎ»ÖÃµÄÔªËØÒÀ´ÎÏòÇ°ÒÆÒ»Î»*/
             remove_value = arr[pos - 1];
-            if(pos < cnt){
-                for(int i = pos;i < cnt;i++) {
-                    arr[i - 1] = arr[i];
-                    if (i == cnt - 1) {
-                        cnt--;
-                    }
-                }
-            }
+            for(int i = pos;i < cnt;i++) {
+                  arr[i - 1] = arr[i];
+               }
+	    cnt--;
         }
         return true;
     }
 
-    /*æ•°ç»„å…ƒç´ å€’ç½®ï¼Œæ­¤æ–¹æ³•é€‚ç”¨äºæœ‰æ•ˆå…ƒç´ ä¸ªæ•°ä¸ºå¥‡æ•°æˆ–å¶æ•°*/
+    /*Êı×éÔªËØµ¹ÖÃ£¬´Ë·½·¨ÊÊÓÃÓÚÓĞĞ§ÔªËØ¸öÊıÎªÆæÊı»òÅ¼Êı*/
     public void inversion_Array(){
 
         int i = 0;
-        int j = cnt - 1;  //æœ€åä¸€ä¸ªå…ƒç´ çš„ä¸‹æ ‡ä¸ºcnt-1
+        int j = cnt - 1;  //×îºóÒ»¸öÔªËØµÄÏÂ±êÎªcnt-1
         int t;
         while(i < j){
             t = arr[i];
@@ -111,7 +107,7 @@ public class Array {
         }
     }
 
-    /*ä½¿ç”¨å†’æ³¡æ’åºå¯¹æ•°ç»„è¿›è¡Œæ’åºï¼ˆä»å°åˆ°å¤§ï¼‰*/
+    /*Ê¹ÓÃÃ°ÅİÅÅĞò¶ÔÊı×é½øĞĞÅÅĞò£¨´ÓĞ¡µ½´ó£©*/
     public void sort_Array(){
 
         int t;

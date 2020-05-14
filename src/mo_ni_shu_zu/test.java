@@ -11,8 +11,7 @@ public class test {
             a.append_Array(88);
             a.insert_Array(2,40);
             a.insert_Array(5,2312);
-            a.sort_Array();
-            a.delect_Array(2);
+            a.delect_Array(a.cnt);
             a.show_Array();
         } catch(Exception e){
            e.printStackTrace();

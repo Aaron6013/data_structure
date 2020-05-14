@@ -13,7 +13,6 @@ public class LinkList {
     public LinkList(int numNode) {
         this.numNode = numNode;
         head = new Node(0); //头结点默认存0
-        node = new Node(numNode);
         node = head;  //node此时指向链表最后一个结点，即头结点
     }
 
